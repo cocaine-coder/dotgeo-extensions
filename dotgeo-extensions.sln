@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84D9E8EB-3657-4D69-8DE6-0578B8BD7218}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotGeo.Extensions", "src\DotGeo.Extensions\DotGeo.Extensions.csproj", "{60B11143-7229-47EA-8B77-ACD58BF7A207}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0CCB5396-8BFA-4B95-9072-59F54E9EF71E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotGeo.Test", "test\DotGeo.Test\DotGeo.Test.csproj", "{BD4C3E50-7428-40CB-84A6-49B972CB2700}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "simples", "simples", "{B33AAB73-ADD7-448F-A90E-CE5ED755B3A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotGeo.Simple", "simples\DotGeo.Simple\DotGeo.Simple.csproj", "{BAC17738-8238-45DB-986D-E5065FFCF555}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60B11143-7229-47EA-8B77-ACD58BF7A207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60B11143-7229-47EA-8B77-ACD58BF7A207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60B11143-7229-47EA-8B77-ACD58BF7A207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60B11143-7229-47EA-8B77-ACD58BF7A207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD4C3E50-7428-40CB-84A6-49B972CB2700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD4C3E50-7428-40CB-84A6-49B972CB2700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD4C3E50-7428-40CB-84A6-49B972CB2700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD4C3E50-7428-40CB-84A6-49B972CB2700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAC17738-8238-45DB-986D-E5065FFCF555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAC17738-8238-45DB-986D-E5065FFCF555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAC17738-8238-45DB-986D-E5065FFCF555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAC17738-8238-45DB-986D-E5065FFCF555}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60B11143-7229-47EA-8B77-ACD58BF7A207} = {84D9E8EB-3657-4D69-8DE6-0578B8BD7218}
+		{BD4C3E50-7428-40CB-84A6-49B972CB2700} = {0CCB5396-8BFA-4B95-9072-59F54E9EF71E}
+		{BAC17738-8238-45DB-986D-E5065FFCF555} = {B33AAB73-ADD7-448F-A90E-CE5ED755B3A2}
+	EndGlobalSection
+EndGlobal

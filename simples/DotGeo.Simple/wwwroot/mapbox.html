@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.js"></script>
+    <script src="https://unpkg.com/geobuf@3.0.2/dist/geobuf.js"></script>
+    <script src=" https://unpkg.com/pbf@3.0.5/dist/pbf.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js'></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="map"></div>
+<script>
+    function getQueryVariable(variable) {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i = 0; i < vars.length; i++) {
+            let pair = vars[i].split("=");
+            if (pair[0] === variable) {
+                return pair[1];
+            }
+        }
+        return false;
+    }
+
+    let layer_url = getQueryVariable("layer_url")
+    let layer_type = getQueryVariable("layer_type")
+    let layer_name = getQueryVariable("layer_name")
+    
+    document.title = layer_type;
+
+    // TO MAKE THE MAP APPEAR YOU MUST    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken =
+        'pk.eyJ1IjoiY29jYWluZWNvZGVyIiwiYSI6ImNrdHA1YjlleDBqYTEzMm85bTBrOWE0aXMifQ.J8k3R1QBqh3pyoZi_5Yx9w';
+
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v10',
+        zoom: 10,
+        center:[120.7,31]
+    });
+
+    map.on('load', () => {
+        if (layer_type === "mvt"){
+            map.addLayer({
+                "id": "layer",
+                type: 'fill',
+                "source": {
+                    "type": "vector",
+                    "tiles": [
+                        layer_url
+                    ],
+                    "minzoom": 6,
+                },
+                'source-layer': layer_name,
+                'paint': {
+                    'fill-color': '#fff000',
+                    'fill-opacity': 0.3,
+                    "fill-outline-color": "#000000",
+                }
+            })
+        }
+        else if(layer_type === "geobuf"){
+            fetch(layer_url).then(res => {
+                res.arrayBuffer().then(value => {
+                    let geojson = geobuf.decode(new Pbf(value));
+                    console.log(geojson)
+                    map.addSource('test', {
+                        'type': "geojson",
+                        'data': geojson
+                    });
+
+                    map.addLayer({
+                        'id': 'layer',
+                        'type': 'fill',
+                        'source': 'test',
+                        'layout': {},
+                        'paint': {
+                            'fill-color': "red",
+                            'fill-opacity': 0.3,
+                            "fill-outline-color": "#000000",
+                        }
+                    });
+                })
+            }).catch(err => {
+                console.error(err);
+            })
+        }else{
+            fetch(layer_url).then(res => {
+                res.json().then(value => {
+                    map.addSource('test', {
+                        'type': "geojson",
+                        'data': JSON.parse(value)
+                    });
+
+                    map.addLayer({
+                        'id': 'layer',
+                        'type': 'fill',
+                        'source': 'test',
+                        'layout': {},
+                        'paint': {
+                            'fill-color': "#0000ff",
+                            'fill-opacity': 0.3,
+                            "fill-outline-color": "#0000ff",
+                        }
+                    });
+                })
+            })
+        }
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+</script>
+
+</body>
+
+</html>
