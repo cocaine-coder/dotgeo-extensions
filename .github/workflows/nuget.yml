@@ -1,0 +1,31 @@
+name: .NET
+
+on:
+  push:
+    tags: # 当提交代码为tag触发 如 git push origin v0.1.0
+      - 'v*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      working-directory: ./src/DotGeo.Extensions/
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+      working-directory: ./test/DotGeo.Test/
+    - name: Publish
+      uses: brandedoutcast/publish-nuget@v2.5.2
+      with:
+        PROJECT_FILE_PATH: src/DotGeo.Extensions/DotGeo.Extensions.csproj
+        NUGET_KEY: ${{secrets.NugetKey}}

@@ -5,6 +5,13 @@
     <Nullable>enable</Nullable>
     <LangVersion>10</LangVersion>
     <TargetFramework>net6.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>cocaine_coder</Authors>
+    <PackageProjectUrl>https://github.com/cocaine-coder/dotgeo-extensions</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/cocaine-coder/dotgeo-extensions/blob/main/LICENSE</PackageLicenseUrl>
+    <PackageIcon>Frame 10695.png</PackageIcon>
+    <RepositoryUrl>https://github.com/cocaine-coder/dotgeo-extensions</RepositoryUrl>
+    <PackageTags>gis postgresql postgis</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +22,13 @@
 
   <ItemGroup>
     <Folder Include="Exceptions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Frame 10695.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
