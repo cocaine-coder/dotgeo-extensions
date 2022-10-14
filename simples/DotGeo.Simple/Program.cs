@@ -1,6 +1,6 @@
 using DotGeo.Extensions;
-using DotGeo.Extensions.NetTopologySuite.Swagger;
 using NetTopologySuite.IO.Converters;
+using NetTopologySuite.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +18,7 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SchemaFilter<GeoJsonSchemaFilter>();
+    options.AddGeometry(GeoSerializeType.Geojson);
 });
 
 var app = builder.Build();

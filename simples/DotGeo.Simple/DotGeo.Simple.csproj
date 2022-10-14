@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DotGeo.Extensions\DotGeo.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\NetTopologySuite.Swagger\NetTopologySuite.Swagger.csproj" />
   </ItemGroup>
 
 </Project>
